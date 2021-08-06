@@ -117,6 +117,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Join" to="." method="_on_Join_pressed"]
 [connection signal="new_server" from="ServerListener" to="." method="_on_ServerListener_new_server"]
 [connection signal="remove_server" from="ServerListener" to="." method="_on_ServerListener_remove_server"]
 [connection signal="item_selected" from="ServerList" to="." method="_on_ServerList_item_selected"]
