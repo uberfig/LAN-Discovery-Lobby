@@ -1,3 +1,5 @@
 this is still under heavy development! 
 =============
-This project is just the lobby system from the Bomberman demo made to be plug-and-play to aid in learning Godot's networking capabilities
+this project should be functional in coming days
+
+This project is the lobby system from the Bomberman demo combined with the [lan discovery plugin](https://github.com/Wavesonics/LANServerBroadcast)  made to be plug-and-play to aid in learning Godot's networking capabilities
