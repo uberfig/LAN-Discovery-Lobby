@@ -11,7 +11,10 @@ var socketUDP: PacketPeerUDP
 var broadcastTimer := Timer.new()
 var broadcastPort := DEFAULT_PORT
 
-func _enter_tree():
+func _ready():
+	get_parent().connect("Host_pressed", self, "begin_hosting")
+
+func begin_hosting():
 	broadcastTimer.wait_time = broadcast_interval
 	broadcastTimer.one_shot = false
 	broadcastTimer.autostart = true

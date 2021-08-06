@@ -1,0 +1,122 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/LANServerBroadcast/server_listener/ServerListener.gd" type="Script" id=1]
+[ext_resource path="res://Lobby/Join.gd" type="Script" id=2]
+
+[node name="Join" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.5
+margin_top = -235.0
+margin_right = 297.5
+margin_bottom = 235.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 49.0
+margin_top = 31.0
+margin_right = 91.0
+margin_bottom = 45.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="."]
+margin_left = 52.0
+margin_top = 50.0
+margin_right = 208.0
+margin_bottom = 74.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+placeholder_text = "Enter Name Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPLabel" type="Label" parent="."]
+margin_left = 277.737
+margin_top = 30.5299
+margin_right = 319.737
+margin_bottom = 44.5299
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "IP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPAddress" type="LineEdit" parent="."]
+margin_left = 279.737
+margin_top = 49.5299
+margin_right = 435.737
+margin_bottom = 73.5299
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "127.0.0.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join" type="Button" parent="."]
+margin_left = 443.737
+margin_top = 51.5299
+margin_right = 508.737
+margin_bottom = 71.5299
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorLabel" type="Label" parent="."]
+margin_left = 15.0
+margin_top = 125.0
+margin_right = 257.0
+margin_bottom = 139.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 47.0
+margin_top = 114.0
+margin_right = 546.0
+margin_bottom = 196.0
+text = "The list below will display available lobbies on your network, however if you know a lobby's IP or want to connect to a lobby that isn't on your network you can manually add the IP address"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerListener" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="ServerList" type="ItemList" parent="."]
+margin_left = 164.631
+margin_top = 216.994
+margin_right = 438.631
+margin_bottom = 385.994
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="new_server" from="ServerListener" to="." method="_on_ServerListener_new_server"]
+[connection signal="remove_server" from="ServerListener" to="." method="_on_ServerListener_remove_server"]
+[connection signal="item_selected" from="ServerList" to="." method="_on_ServerList_item_selected"]

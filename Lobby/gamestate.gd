@@ -17,6 +17,9 @@ const MAX_PEERS = 6
 
 var peer = null
 
+#computer username
+var system_name: String
+
 # Name for my player.
 var player_name = ""
 
