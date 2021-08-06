@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Lobby/Lobby.gd" type="Script" id=1]
+[ext_resource path="res://addons/LANServerBroadcast/server_listener/ServerListener.gd" type="Script" id=2]
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
@@ -10,7 +11,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Connect" type="Panel" parent="."]
+[node name="Host" type="Panel" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -25,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NameLabel" type="Label" parent="Connect"]
+[node name="NameLabel" type="Label" parent="Host"]
 margin_left = 14.0
 margin_top = 11.0
 margin_right = 56.0
@@ -33,8 +35,11 @@ margin_bottom = 25.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Name" type="LineEdit" parent="Connect"]
+[node name="Name" type="LineEdit" parent="Host"]
 margin_left = 17.0
 margin_top = 30.0
 margin_right = 173.0
@@ -43,25 +48,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 placeholder_text = "Enter Name Here"
 
-[node name="IPLabel" type="Label" parent="Connect"]
-margin_left = 15.0
-margin_top = 66.0
-margin_right = 57.0
-margin_bottom = 80.0
-size_flags_horizontal = 2
-size_flags_vertical = 0
-text = "IP:"
-
-[node name="IPAddress" type="LineEdit" parent="Connect"]
-margin_left = 17.0
-margin_top = 85.0
-margin_right = 173.0
-margin_bottom = 109.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "127.0.0.1"
-
-[node name="Host" type="Button" parent="Connect"]
+[node name="Host" type="Button" parent="Host"]
 margin_left = 181.0
 margin_top = 31.0
 margin_right = 246.0
@@ -73,16 +60,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Join" type="Button" parent="Connect"]
-margin_left = 181.0
-margin_top = 87.0
-margin_right = 246.0
-margin_bottom = 107.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "Join"
-
-[node name="ErrorLabel" type="Label" parent="Connect"]
+[node name="ErrorLabel" type="Label" parent="Host"]
 margin_left = 15.0
 margin_top = 125.0
 margin_right = 257.0
@@ -91,6 +69,149 @@ size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
 align = 1
+
+[node name="Join" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.5
+margin_top = -83.5
+margin_right = 138.5
+margin_bottom = 83.5
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Join"]
+margin_left = 14.0
+margin_top = 11.0
+margin_right = 56.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Join"]
+margin_left = 17.0
+margin_top = 30.0
+margin_right = 173.0
+margin_bottom = 54.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+placeholder_text = "Enter Name Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPLabel" type="Label" parent="Join"]
+margin_left = 15.0
+margin_top = 66.0
+margin_right = 57.0
+margin_bottom = 80.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "IP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPAddress" type="LineEdit" parent="Join"]
+margin_left = 17.0
+margin_top = 85.0
+margin_right = 173.0
+margin_bottom = 109.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "127.0.0.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join" type="Button" parent="Join"]
+margin_left = 181.0
+margin_top = 87.0
+margin_right = 246.0
+margin_bottom = 107.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorLabel" type="Label" parent="Join"]
+margin_left = 15.0
+margin_top = 125.0
+margin_right = 257.0
+margin_bottom = 139.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Join"]
+margin_left = 312.851
+margin_top = 15.8234
+margin_right = 588.851
+margin_bottom = 97.8234
+text = "This list will display available lobbies on your network, however if you know a lobby's IP or want to connect to a lobby that isn't on your network you can manually add the IP address"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConnectMethood" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.5
+margin_top = -83.5
+margin_right = 138.5
+margin_bottom = 83.5
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HostMode" type="Button" parent="ConnectMethood"]
+margin_left = 34.0
+margin_top = 53.0
+margin_right = 118.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 84, 55 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Host Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoinMode" type="Button" parent="ConnectMethood"]
+margin_left = 162.0
+margin_top = 53.0
+margin_right = 246.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 84, 55 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Join Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Players" type="Panel" parent="."]
 visible = false
@@ -159,7 +280,12 @@ margin_bottom = 58.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[connection signal="pressed" from="Connect/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Connect/Join" to="." method="_on_join_pressed"]
+[node name="ServerListener" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[connection signal="pressed" from="Host/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="ConnectMethood/HostMode" to="." method="_on_HostMode_pressed"]
+[connection signal="pressed" from="ConnectMethood/JoinMode" to="." method="_on_JoinMode_pressed"]
 [connection signal="pressed" from="Players/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Players/FindPublicIP" to="." method="_on_find_public_ip_pressed"]

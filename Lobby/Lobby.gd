@@ -99,3 +99,56 @@ func _on_find_public_ip_pressed():
 
 
 
+
+
+func _on_HostMode_pressed():
+	pass # Replace with function body.
+
+
+func _on_JoinMode_pressed():
+	pass # Replace with function body.
+
+
+
+#below for server browser
+
+export (NodePath) var serverListPath: NodePath
+onready var serverList := get_node(serverListPath)
+
+func _on_ServerListener_new_server(serverInfo):
+	# Create some UI for the newly found server
+	var serverNode := Label.new()
+	serverNode.text = "%s - %s" % [serverInfo.ip, serverInfo.name]
+	serverList.add_child(serverNode)
+
+func _on_ServerListener_remove_server(serverIp):
+	for serverNode in serverList.get_children():
+		# Just a hacky way to identify the Node and remove it
+		if serverNode.text.find(serverIp) > -1:
+			serverList.remove_child(serverNode)
+			break
+
+
+#below for hosting server
+
+export (NodePath) var advertiserPath: NodePath
+onready var advertiser := get_node(advertiserPath)
+
+const PORT := 3333
+
+
+func _enter_tree():
+	var peer = NetworkedMultiplayerENet.new()
+	var result = peer.create_server(PORT)
+	if result == OK:
+		get_tree().set_network_peer(peer)
+		print("Game hosted")
+	else:
+		print("Failed to host game")
+
+
+#func _ready():
+#	# Set this lobby's info to be advertised
+#	advertiser.serverInfo["name"] = "A great lobby"
+#	advertiser.serverInfo["port"] = PORT
+
