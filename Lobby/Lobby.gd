@@ -50,6 +50,12 @@ func _on_JoinMode_pressed():
 #	var joinmenu = load("res://Lobby/Join.tscn")
 #	var instance = joinmenu.instance()
 #	add_child(instance)
+	var server_listener = load("res://Lobby/ServerListener.tscn")
+	var instance = server_listener.instance()
+	$Join.add_child(instance)
+	$Join/ServerListener.connect("new_server", $Join, "_on_ServerListener_new_server")
+	$Join/ServerListener.connect("remove_server", $Join, "_on_ServerListener_remove_server")
+	
 	$Join/Name.text = gamestate.system_name
 	$Join.show()
 
@@ -70,6 +76,9 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
+	if $Join.has_node("ServerListener"):
+		$Join/ServerListener.queue_free()
+	
 	if $Join/Name.text == "":
 		$Join/ErrorLabel.text = "Invalid name!"
 		return

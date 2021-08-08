@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Lobby/Lobby.gd" type="Script" id=1]
-[ext_resource path="res://addons/LANServerBroadcast/server_listener/ServerListener.gd" type="Script" id=2]
 [ext_resource path="res://Lobby/Join.gd" type="Script" id=3]
-[ext_resource path="res://Lobby/Host.gd" type="Script" id=4]
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
@@ -134,7 +132,6 @@ margin_right = 138.5
 margin_bottom = 83.5
 size_flags_horizontal = 2
 size_flags_vertical = 2
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -285,9 +282,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ServerListener" type="Node" parent="Join"]
-script = ExtResource( 2 )
-
 [node name="ServerList" type="ItemList" parent="Join"]
 margin_left = 164.631
 margin_top = 216.994
@@ -301,11 +295,5 @@ __meta__ = {
 [connection signal="pressed" from="ConnectMethood/JoinMode" to="." method="_on_JoinMode_pressed"]
 [connection signal="pressed" from="Players/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Players/FindPublicIP" to="." method="_on_find_public_ip_pressed"]
-[connection signal="Host_pressed" from="Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Host/Host" to="Host" method="_on_Host_pressed"]
-[connection signal="Join_pressed" from="Join" to="." method="_on_Join_pressed"]
-[connection signal="Join_pressed" from="Join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Join/Join" to="Join" method="_on_Join_pressed"]
-[connection signal="new_server" from="Join/ServerListener" to="Join" method="_on_ServerListener_new_server"]
-[connection signal="remove_server" from="Join/ServerListener" to="Join" method="_on_ServerListener_remove_server"]
-[connection signal="item_selected" from="Join/ServerList" to="Join" method="_on_ServerList_item_selected"]
+[connection signal="pressed" from="Host/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join/Join" to="." method="_on_join_pressed"]

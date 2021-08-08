@@ -21,9 +21,7 @@ signal Host_pressed()
 	
 
 
-func _ready():
-	# Set this lobby's info to be advertised
-	$Name.text = gamestate.system_name
+
 
 
 
