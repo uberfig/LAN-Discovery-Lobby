@@ -26,30 +26,33 @@ func _ready():
 
 
 func _on_HostMode_pressed():
-	if self.has_node("Host"):
-		$Host.queue_free()
-	if self.has_node("Join"):
-		$Join.queue_free()
+#	if self.has_node("Host"):
+#		$Host.queue_free()
+#	if self.has_node("Join"):
+#		$Join.queue_free()
 	
 	$ConnectMethood.hide()
-	var hostmenu = load("res://Lobby/Host.tscn")
-	var instance = hostmenu.instance()
-	add_child(instance)
-	$Host.connect("Host_pressed", self, "_on_host_pressed")
-	
+#	var hostmenu = load("res://Lobby/Host.tscn")
+#	var instance = hostmenu.instance()
+#	add_child(instance)
+#	$Host.connect("Host_pressed", self, "_on_host_pressed")
+	$Host/Name.text = gamestate.system_name
+	$Host.show()
 
 
 func _on_JoinMode_pressed():
-	if self.has_node("Host"):
-		$Host.queue_free()
-	if self.has_node("Join"):
-		$Join.queue_free()
+#	if self.has_node("Host"):
+#		$Host.queue_free()
+#	if self.has_node("Join"):
+#		$Join.queue_free()
 	
 	$ConnectMethood.hide()
-	var joinmenu = load("res://Lobby/Join.tscn")
-	var instance = joinmenu.instance()
-	add_child(instance)
-	$Join.connect("Join_pressed", self, "_on_Join_pressed")
+#	var joinmenu = load("res://Lobby/Join.tscn")
+#	var instance = joinmenu.instance()
+#	add_child(instance)
+	$Join/Name.text = gamestate.system_name
+	$Join.show()
+
 
 
 func _on_host_pressed():

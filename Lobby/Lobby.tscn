@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Lobby/Lobby.gd" type="Script" id=1]
+[ext_resource path="res://addons/LANServerBroadcast/server_listener/ServerListener.gd" type="Script" id=2]
+[ext_resource path="res://Lobby/Join.gd" type="Script" id=3]
+[ext_resource path="res://Lobby/Host.gd" type="Script" id=4]
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
@@ -119,7 +122,190 @@ margin_bottom = 58.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
+[node name="Host" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.5
+margin_top = -83.5
+margin_right = 138.5
+margin_bottom = 83.5
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Host"]
+margin_left = 14.0
+margin_top = 11.0
+margin_right = 56.0
+margin_bottom = 25.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Host"]
+margin_left = 17.0
+margin_top = 30.0
+margin_right = 173.0
+margin_bottom = 54.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+placeholder_text = "Enter Name Here"
+
+[node name="Host" type="Button" parent="Host"]
+margin_left = 181.0
+margin_top = 31.0
+margin_right = 246.0
+margin_bottom = 51.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Host"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorLabel" type="Label" parent="Host"]
+margin_left = 15.0
+margin_top = 125.0
+margin_right = 257.0
+margin_bottom = 139.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
+align = 1
+
+[node name="Join" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.5
+margin_top = -235.0
+margin_right = 297.5
+margin_bottom = 235.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Join"]
+margin_left = 49.0
+margin_top = 31.0
+margin_right = 91.0
+margin_bottom = 45.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Join"]
+margin_left = 52.0
+margin_top = 50.0
+margin_right = 208.0
+margin_bottom = 74.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+placeholder_text = "Enter Name Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPLabel" type="Label" parent="Join"]
+margin_left = 277.737
+margin_top = 30.5299
+margin_right = 319.737
+margin_bottom = 44.5299
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "IP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPAddress" type="LineEdit" parent="Join"]
+margin_left = 279.737
+margin_top = 49.5299
+margin_right = 435.737
+margin_bottom = 73.5299
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "127.0.0.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join" type="Button" parent="Join"]
+margin_left = 443.737
+margin_top = 51.5299
+margin_right = 508.737
+margin_bottom = 71.5299
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorLabel" type="Label" parent="Join"]
+margin_left = 15.0
+margin_top = 125.0
+margin_right = 257.0
+margin_bottom = 139.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Join"]
+margin_left = 47.0
+margin_top = 114.0
+margin_right = 546.0
+margin_bottom = 196.0
+text = "The list below will display available lobbies on your network, however if you know a lobby's IP or want to connect to a lobby that isn't on your network you can manually add the IP address"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerListener" type="Node" parent="Join"]
+script = ExtResource( 2 )
+
+[node name="ServerList" type="ItemList" parent="Join"]
+margin_left = 164.631
+margin_top = 216.994
+margin_right = 438.631
+margin_bottom = 385.994
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ConnectMethood/HostMode" to="." method="_on_HostMode_pressed"]
 [connection signal="pressed" from="ConnectMethood/JoinMode" to="." method="_on_JoinMode_pressed"]
 [connection signal="pressed" from="Players/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Players/FindPublicIP" to="." method="_on_find_public_ip_pressed"]
+[connection signal="Host_pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Host/Host" to="Host" method="_on_Host_pressed"]
+[connection signal="Join_pressed" from="Join" to="." method="_on_Join_pressed"]
+[connection signal="Join_pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Join/Join" to="Join" method="_on_Join_pressed"]
+[connection signal="new_server" from="Join/ServerListener" to="Join" method="_on_ServerListener_new_server"]
+[connection signal="remove_server" from="Join/ServerListener" to="Join" method="_on_ServerListener_remove_server"]
+[connection signal="item_selected" from="Join/ServerList" to="Join" method="_on_ServerList_item_selected"]
