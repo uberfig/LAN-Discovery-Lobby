@@ -28,6 +28,10 @@ func _ready():
 	advertiser.serverInfo["port"] = PORT
 
 
+#change this so that the signal is directly relayed to 
+#the lobby script and remove everything above as gamestate.gd 
+#will handle the server creation
+
 func _on_Host_pressed():
 	begin_host()
 	emit_signal("Host_pressed")
