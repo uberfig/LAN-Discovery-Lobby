@@ -99,7 +99,7 @@ func _on_find_public_ip_pressed():
 	OS.shell_open("https://icanhazip.com/")
 
 
-
+#TODO bring host and join back into the scene once everything is working properly
 
 
 func _on_HostMode_pressed():
