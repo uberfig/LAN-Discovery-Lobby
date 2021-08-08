@@ -22,6 +22,36 @@ func _ready():
 
 
 
+
+
+
+func _on_HostMode_pressed():
+	if self.has_node("Host"):
+		$Host.queue_free()
+	if self.has_node("Join"):
+		$Join.queue_free()
+	
+	$ConnectMethood.hide()
+	var hostmenu = load("res://Lobby/Host.tscn")
+	var instance = hostmenu.instance()
+	add_child(instance)
+	$Host.connect("Host_pressed", self, "_on_host_pressed")
+	
+
+
+func _on_JoinMode_pressed():
+	if self.has_node("Host"):
+		$Host.queue_free()
+	if self.has_node("Join"):
+		$Join.queue_free()
+	
+	$ConnectMethood.hide()
+	var joinmenu = load("res://Lobby/Join.tscn")
+	var instance = joinmenu.instance()
+	add_child(instance)
+	$Join.connect("Join_pressed", self, "_on_Join_pressed")
+
+
 func _on_host_pressed():
 	if $Host/Name.text == "": #makes sure the player has a real name
 		$Host/ErrorLabel.text = "Invalid name!"
@@ -102,39 +132,11 @@ func _on_find_public_ip_pressed():
 #TODO bring host and join back into the scene once everything is working properly
 
 
-func _on_HostMode_pressed():
-	if self.has_node("Host"):
-		$Host.queue_free()
-	if self.has_node("Join"):
-		$Join.queue_free()
-	
-	$ConnectMethood.hide()
-	var hostmenu = load("res://Lobby/Host.tscn")
-	var instance = hostmenu.instance()
-	add_child(instance)
-	$Host.connect("Host_pressed", self, "_on_host_pressed")
-	
-
-
-func _on_JoinMode_pressed():
-	if self.has_node("Host"):
-		$Host.queue_free()
-	if self.has_node("Join"):
-		$Join.queue_free()
-	
-	$ConnectMethood.hide()
-	var joinmenu = load("res://Lobby/Join.tscn")
-	var instance = joinmenu.instance()
-	add_child(instance)
-	$Join.connect("Join_pressed", self, "_on_Join_pressed")
 
 
 
 
 
 
-#func _ready():
-#	# Set this lobby's info to be advertised
-#	advertiser.serverInfo["name"] = "A great lobby"
-#	advertiser.serverInfo["port"] = PORT
+
 

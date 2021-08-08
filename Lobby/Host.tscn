@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.gd" type="Script" id=1]
 [ext_resource path="res://Lobby/Host.gd" type="Script" id=2]
 
 [node name="Host" type="Panel"]
@@ -18,7 +17,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-advertiserPath = NodePath("ServerAdvertiser")
 
 [node name="NameLabel" type="Label" parent="."]
 margin_left = 14.0
@@ -62,8 +60,5 @@ size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
 align = 1
-
-[node name="ServerAdvertiser" type="Node" parent="."]
-script = ExtResource( 1 )
 
 [connection signal="pressed" from="Host" to="." method="_on_Host_pressed"]

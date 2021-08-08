@@ -116,6 +116,15 @@ func host_game(new_player_name):
 	peer = NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT, MAX_PEERS)
 	get_tree().set_network_peer(peer)
+	
+	if self.has_node("ServerAdvertiser"):
+		$ServerAdvertiser.queue_free()
+
+	var advertiser = load("res://Lobby/ServerAdvertiser.tscn")
+	var instance = advertiser.instance()
+	add_child(instance)
+	$ServerAdvertiser.serverInfo["name"] = player_name
+	$ServerAdvertiser.serverInfo["port"] = DEFAULT_PORT
 
 
 func join_game(ip, new_player_name):

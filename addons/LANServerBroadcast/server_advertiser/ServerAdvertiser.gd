@@ -14,7 +14,7 @@ var broadcastPort := DEFAULT_PORT
 func _ready():
 	get_parent().connect("Host_pressed", self, "begin_hosting")
 
-func begin_hosting():
+func _enter_tree():
 	broadcastTimer.wait_time = broadcast_interval
 	broadcastTimer.one_shot = false
 	broadcastTimer.autostart = true
