@@ -12,7 +12,8 @@ var broadcastTimer := Timer.new()
 var broadcastPort := DEFAULT_PORT
 
 func _ready():
-	get_parent().connect("Host_pressed", self, "begin_hosting")
+#	get_parent().connect("Host_pressed", self, "begin_hosting")
+	pass
 
 func _enter_tree():
 	broadcastTimer.wait_time = broadcast_interval
