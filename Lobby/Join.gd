@@ -4,10 +4,8 @@ extends Panel
 #below for server browser
 
 
-onready var serverList = $ServerList
-
-
-var open_servers = {}
+onready var server_list = $ServerList
+onready var enter_ip = $IPAddress
 
 
 
@@ -18,7 +16,9 @@ var open_servers = {}
 #	open_servers[serverInfo.ip] = serverInfo.name
 
 func _on_ServerListener_new_server(serverInfo):
-	serverList.add_item(str(serverInfo.name, " -- ", serverInfo.ip))
+	server_list.add_item(str(serverInfo.name, " -- ", serverInfo.ip))
+	var fooIndex = server_list.get_item_count() - 1
+	server_list.set_item_metadata(fooIndex, serverInfo.ip)
 
 
 func _on_ServerListener_remove_server(serverIp):
@@ -27,13 +27,7 @@ func _on_ServerListener_remove_server(serverIp):
 	pass
 
 
-func reset_server_list():
-	
-	for ip in open_servers:
-		serverList.add_item(str(open_servers[ip], " -- ", ip), null, true)
 
 
-#func _on_ServerList_item_selected(index):
-#	print(index)
-
-
+func _on_ServerList_item_selected(index):
+	enter_ip.text = str(server_list.get_item_metadata(index))

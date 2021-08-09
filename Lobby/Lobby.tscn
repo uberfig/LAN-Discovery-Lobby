@@ -297,3 +297,4 @@ __meta__ = {
 [connection signal="pressed" from="Players/FindPublicIP" to="." method="_on_find_public_ip_pressed"]
 [connection signal="pressed" from="Host/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join/Join" to="." method="_on_join_pressed"]
+[connection signal="item_selected" from="Join/ServerList" to="Join" method="_on_ServerList_item_selected"]
